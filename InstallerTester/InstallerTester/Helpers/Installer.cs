@@ -24,8 +24,21 @@ namespace InstallerTester.Helpers
 
         public bool Install()
         {
-            InstallInfo.IsInstalled = true;
-            return true;
+            using (var p = new System.Diagnostics.Process())
+            {
+                p.StartInfo.CreateNoWindow = true;
+                var msiExec = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "msiexec.exe");
+                p.StartInfo.Arguments = $"-h \"{msiExec} /i {InstallInfo.MsiPath} /qn /l*v {InstallInfo.LogPathInstall}\"";
+                p.StartInfo.FileName = GetPsExecPath();
+                p.Start();
+                var result = p.WaitForExit(Config.WaitTimeInSeconds);
+                if (result)
+                {
+                    InstallInfo.IsInstalled = true;
+                }
+
+                return result;
+            }
         }
 
         public bool Uninstall()
@@ -39,7 +52,7 @@ namespace InstallerTester.Helpers
             {
                 p.StartInfo.CreateNoWindow = true;
                 var msiExec = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "msiexec.exe");
-                p.StartInfo.Arguments = $"{msiExec} /x {InstallInfo.ProductCode} /qn /l*v {InstallInfo.LogPath}";
+                p.StartInfo.Arguments = $"-h \"{msiExec} /x {InstallInfo.ProductCode} /qn /l*v {InstallInfo.LogPathUninstall}\"";
                 p.StartInfo.FileName = GetPsExecPath();
                 p.Start();
                 var result = p.WaitForExit(Config.WaitTimeInSeconds);
@@ -50,6 +63,11 @@ namespace InstallerTester.Helpers
 
                 return result;
             }
+        }
+
+        private object GetMsiExecCmdLineFile(string v)
+        {
+            throw new NotImplementedException();
         }
 
         private string GetPsExecPath()

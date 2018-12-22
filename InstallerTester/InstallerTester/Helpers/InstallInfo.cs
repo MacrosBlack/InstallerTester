@@ -14,7 +14,8 @@ namespace InstallerTester.Helpers
         public string Version { get; set; }
 
         private MsiTableProperty _propertyTable { get; }
-        public string LogPath { get; private set; }
+        public string LogPathInstall { get; private set; }
+        public string LogPathUninstall { get; private set; }
 
         public InstallInfo(string msiPath)
         {
@@ -25,7 +26,8 @@ namespace InstallerTester.Helpers
 
             var fi = new FileInfo(msiPath);
 
-            LogPath = Path.Combine(Config.LogPathRoot, $"{fi.Name}.log");
+            LogPathInstall = Path.Combine(Config.LogPathRoot, $"{fi.Name}.log");
+            LogPathUninstall = Path.Combine(Config.LogPathRoot, $"{fi.Name}.uninstall.log");
             MsiPath = msiPath;
         }
     }
