@@ -12,7 +12,6 @@ namespace InstallerTester
             using (var installer = new Installer(Config.DemoAppInstallPath))
             {
                 Assert.IsTrue(installer.Install());
-                Assert.IsTrue(installer.Uninstall());
             }
         }
     }
