@@ -6,6 +6,6 @@
         ProductName,
         UpgradeCode,
         Manufacturer,
-        Version,
+        ProductVersion,
     }
 }
