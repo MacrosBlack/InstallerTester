@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*" Name="DemoApp" Language="1033" Version="1.0.0.0" Manufacturer="GGC" UpgradeCode="e5af47f1-5a19-4b09-82c7-aaee6c938c1d">
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate EmbedCab="yes" />
+
+    <Feature Id="ProductFeature" Title="DemoApp" Level="1">
+      <ComponentGroupRef Id="ProductComponents" />
+    </Feature>
+  </Product>
+
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="DemoApp" />
+      </Directory>
+    </Directory>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+      <Component Id="InstallerTester" Guid="e5af47f1-5a19-4b09-82c7-aaee6c938c2d">
+        <File Source="$(var.InstallerTester.TargetDir)InstallerTester.dll" KeyPath="yes" ></File>
+        <File Source="$(var.InstallerTester.TargetDir)InstallerTester.pdb"></File>
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>

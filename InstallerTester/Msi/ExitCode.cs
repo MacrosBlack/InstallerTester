@@ -12,27 +12,35 @@
 
         //	One of the parameters was invalid.
         INVALID_PARAMETER = 87,
-        
+
         // This value is returned when a custom action attempts to call a function that cannot be called from custom actions.The function returns the value CALL_NOT_IMPLEMENTED. Available beginning with Windows Installer version 3.0.
         CALL_NOT_IMPLEMENTED = 120,
 
         //	If Windows Installer determines a product may be incompatible with the current operating system, it displays a dialog box informing the user and asking whether to try to install anyway.This error code is returned if the user chooses not to try the installation.
         APPHELP_BLOCK = 1259,
-        
+
         // The Windows Installer service could not be accessed.Contact your support personnel to verify that the Windows Installer service is properly registered.
         INSTALL_SERVICE_FAILURE = 1601,
-        
+
         // The user cancels installation.
         INSTALL_USEREXIT = 1602,
-        
+
         //	A fatal error occurred during installation.
         INSTALL_FAILURE = 1603,
 
         INSTALL_SUSPEND = 1604,// Installation suspended, incomplete.
-        UNKNOWN_PRODUCT = 1605, // This action is only valid for products that are currently installed.
-        UNKNOWN_FEATURE = 1606, //	The feature identifier is not registered.
-        UNKNOWN_COMPONENT = 1607, //	The component identifier is not registered.
-        UNKNOWN_PROPERTY = 1608, //	This is an unknown property.
+        
+        // This action is only valid for products that are currently installed.
+        UNKNOWN_PRODUCT = 1605,
+
+        //	The feature identifier is not registered.
+        UNKNOWN_FEATURE = 1606,
+
+        //	The component identifier is not registered.
+        UNKNOWN_COMPONENT = 1607,
+
+        //	This is an unknown property.
+        UNKNOWN_PROPERTY = 1608,
         INVALID_HANDLE_STATE = 1609, //	The handle is in an invalid state.
         BAD_CONFIGURATION = 1610, //	The configuration data for this product is corrupt.Contact your support personnel.
         INDEX_ABSENT = 1611, //	The component qualifier not present.
@@ -86,7 +94,7 @@
         public static bool IsSuccess(int exitCode)
         {
             return true ?
-                (ExitCode)exitCode == ExitCode.Success || (ExitCode)exitCode == ExitCode.SUCCESS_REBOOT_INITIATED || (ExitCode)exitCode == ExitCode.SUCCESS_REBOOT_REQUIRED : 
+                (ExitCode)exitCode == ExitCode.Success || (ExitCode)exitCode == ExitCode.SUCCESS_REBOOT_INITIATED || (ExitCode)exitCode == ExitCode.SUCCESS_REBOOT_REQUIRED :
                 false;
         }
     }
