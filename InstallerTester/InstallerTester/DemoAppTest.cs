@@ -7,7 +7,7 @@ namespace InstallerTester
     public class DemoAppTest
     {
         [TestMethod]
-        public void Install_Returns_Zero()
+        public void Install_Returns_True()
         {
             Assert.IsTrue(Admin.IsAdmin(), "This test must be executed with elevated permissions (Run as administrator)");
             using (var installer = new Installer(Config.DemoAppInstallPath))
