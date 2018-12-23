@@ -58,6 +58,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\Admin.cs" />
     <Compile Include="Helpers\Config.cs" />
     <Compile Include="DemoAppTest.cs" />
     <Compile Include="Helpers\Installer.cs" />
