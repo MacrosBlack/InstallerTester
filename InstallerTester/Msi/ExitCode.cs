@@ -299,9 +299,11 @@
     {
         public static bool IsSuccess(ExitCode exitCode)
         {
-            return true ?
-                exitCode == ExitCode.Success || exitCode == ExitCode.SUCCESS_REBOOT_INITIATED || exitCode == ExitCode.SUCCESS_REBOOT_REQUIRED :
-                false;
+            return true ? 
+                exitCode == ExitCode.Success || 
+                exitCode == ExitCode.SUCCESS_REBOOT_INITIATED || 
+                exitCode == ExitCode.SUCCESS_REBOOT_REQUIRED 
+                : false;
         }
     }
 }
