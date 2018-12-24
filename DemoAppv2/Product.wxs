@@ -39,9 +39,7 @@
         <File Source="$(var.InstallerTester.TargetDir)Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll" KeyPath="yes"></File>
       </Component>
       <Component Id="MSVS_Interface" Guid="e5af47f1-5a19-4b09-82c7-aaee6c938c8d">
-        <File Source="$(var.InstallerTester.TargetDir)Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll" KeyPath="yes" Name="VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll"></File>
-        <!-- Workaround for ICE03 -->
-        <CopyFile Id="CopyPlatformServices" Delete="yes" SourceName="VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll" DestinationDirectory="INSTALLFOLDER" DestinationName="Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll" />
+        <File Source="$(var.InstallerTester.TargetDir)Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll" KeyPath="yes" ></File>
       </Component>
       <Component Id="MSVS_TestFramework" Guid="e5af47f1-5a19-4b09-82c7-aaee6c938c9d">
         <File Source="$(var.InstallerTester.TargetDir)Microsoft.VisualStudio.TestPlatform.TestFramework.dll" KeyPath="yes"></File>

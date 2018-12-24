@@ -18,6 +18,8 @@
     </SuppressSpecificWarnings>
     <SuppressAllWarnings>False</SuppressAllWarnings>
     <Pedantic>False</Pedantic>
+    <SuppressValidation>False</SuppressValidation>
+    <SuppressIces>ICE03</SuppressIces>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <OutputPath>bin\$(Configuration)\</OutputPath>
@@ -25,6 +27,7 @@
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
     <LeaveTemporaryFiles>False</LeaveTemporaryFiles>
     <SuppressPdbOutput>True</SuppressPdbOutput>
+    <SuppressIces>ICE03</SuppressIces>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Product.wxs" />

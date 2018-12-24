@@ -38,6 +38,9 @@ namespace InstallerTester.Helpers
         {
             if (InstallInfo.IsInstalled)
             {
+                Trace.WriteLine("**********************************************");
+                Trace.WriteLine("Disposing is calling Uninstall");
+                Trace.WriteLine("**********************************************");
                 Uninstall();
             }
         }
@@ -58,14 +61,12 @@ namespace InstallerTester.Helpers
                     if (ExitCodeHelper.IsSuccess(InstallInfo.ExitCode))
                     {
                         Trace.WriteLine($"The install of product:{InstallInfo.ProductName} ({InstallInfo.ProductCode}) succeeded with ExitCode:{InstallInfo.ExitCode}. LogFile:'{InstallInfo.LogPathInstall}'");
-                        Trace.WriteLine(File.ReadAllText(InstallInfo.LogPathInstall));
                         InstallInfo.IsInstalled = true;
                         return true;
                     }
                     else
                     {
                         Trace.WriteLine($"The install of product:{InstallInfo.ProductName} ({InstallInfo.ProductCode}) failed with exitcode:{InstallInfo.ExitCode}. LogFile:'{InstallInfo.LogPathInstall}'");
-                        Trace.WriteLine(File.ReadAllText(InstallInfo.LogPathInstall));
                         return false;
                     }
                 }
@@ -100,13 +101,11 @@ namespace InstallerTester.Helpers
                     {
                         InstallInfo.IsInstalled = false;
                         Trace.WriteLine($"The uninstall of product:{InstallInfo.ProductName} ({InstallInfo.ProductCode}) succeeded. ExitCode:{InstallInfo.ExitCode}. LogFile:'{InstallInfo.LogPathUninstall}'");
-                        Trace.WriteLine(File.ReadAllText(InstallInfo.LogPathUninstall));
                         return true;
                     }
                     else
                     {
                         Trace.WriteLine($"The uninstall of product:{InstallInfo.ProductName} ({InstallInfo.ProductCode}) failed with exitcode:{InstallInfo.ExitCode}. LogFile:'{InstallInfo.LogPathUninstall}'");
-                        Trace.WriteLine(File.ReadAllText(InstallInfo.LogPathUninstall));
                         return false;
                     }
                 }
