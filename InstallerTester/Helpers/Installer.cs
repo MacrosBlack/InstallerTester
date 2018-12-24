@@ -52,7 +52,7 @@ namespace InstallerTester.Helpers
                 p.StartInfo.FileName = msiExec;
                 p.Start();
                 var result = p.WaitForExit(Config.WaitTimeInSeconds);
-                InstallInfo.ExitCode = p.ExitCode;
+                InstallInfo.ExitCode = (ExitCode)p.ExitCode;
                 if (result)
                 {
                     if (ExitCodeHelper.IsSuccess(InstallInfo.ExitCode))
@@ -93,7 +93,7 @@ namespace InstallerTester.Helpers
                 p.StartInfo.FileName = msiExec;
                 p.Start();
                 var result = p.WaitForExit(Config.WaitTimeInSeconds);
-                InstallInfo.ExitCode = p.ExitCode;
+                InstallInfo.ExitCode = (ExitCode)p.ExitCode;
                 if (result)
                 {
                     if (ExitCodeHelper.IsSuccess(InstallInfo.ExitCode))

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-  <Product Id="*" Name="DemoApp" Language="1033" Version="2.0.0.0" Manufacturer="GGC" UpgradeCode="e5af47f1-5a19-4b09-82c7-aaee6c938c1d">
+  <Product Id="*" Name="DemoApp v2" Language="1033" Version="2.0.0.0" Manufacturer="GGC" UpgradeCode="e5af47f1-5a19-4b09-82c7-aaee6c938c1d">
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
@@ -34,16 +35,18 @@
       <Component Id="Microsoft_VisualStudio_TestPlatform_MSTest_TestAdapter" Guid="e5af47f1-5a19-4b09-82c7-aaee6c938c6d">
         <File Source="$(var.InstallerTester.TargetDir)Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll" KeyPath="yes"></File>
       </Component>
-      <Component Id="Microsoft_VisualStudio_TestPlatform_MSTestAdapter_PlatformServices" Guid="e5af47f1-5a19-4b09-82c7-aaee6c938c7d">
+      <Component Id="MSVS_PlatformServices" Guid="e5af47f1-5a19-4b09-82c7-aaee6c938c7d">
         <File Source="$(var.InstallerTester.TargetDir)Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll" KeyPath="yes"></File>
       </Component>
-      <Component Id="Microsoft_VisualStudio_TestPlatform_MSTestAdapter_PlatformServices_Interface" Guid="e5af47f1-5a19-4b09-82c7-aaee6c938c8d">
-        <File Source="$(var.InstallerTester.TargetDir)Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll" KeyPath="yes"></File>
+      <Component Id="MSVS_Interface" Guid="e5af47f1-5a19-4b09-82c7-aaee6c938c8d">
+        <File Source="$(var.InstallerTester.TargetDir)Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll" KeyPath="yes" Name="VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll"></File>
+        <!-- Workaround for ICE03 -->
+        <CopyFile Id="CopyPlatformServices" Delete="yes" SourceName="VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll" DestinationDirectory="INSTALLFOLDER" DestinationName="Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll" />
       </Component>
-      <Component Id="Microsoft_VisualStudio_TestPlatform_TestFramework" Guid="e5af47f1-5a19-4b09-82c7-aaee6c938c9d">
+      <Component Id="MSVS_TestFramework" Guid="e5af47f1-5a19-4b09-82c7-aaee6c938c9d">
         <File Source="$(var.InstallerTester.TargetDir)Microsoft.VisualStudio.TestPlatform.TestFramework.dll" KeyPath="yes"></File>
       </Component>
-      <Component Id="Microsoft_VisualStudio_TestPlatform_TestFramework.Extensions" Guid="e5af47f1-5a19-4b09-82c7-aaee6c938cad">
+      <Component Id="MSVS_Extensions" Guid="e5af47f1-5a19-4b09-82c7-aaee6c938cad">
         <File Source="$(var.InstallerTester.TargetDir)Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll" KeyPath="yes"></File>
       </Component>
     </ComponentGroup>

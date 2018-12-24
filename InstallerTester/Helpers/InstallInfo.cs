@@ -12,7 +12,7 @@ namespace InstallerTester.Helpers
         public string Manufacturer { get; set; }
         public string ProductName { get; set; }
         public string ProductVersion { get; set; }
-        public int ExitCode { get; set; }
+        public ExitCode ExitCode { get; set; }
 
         private MsiTableProperty _propertyTable { get; }
         public string LogPathInstall { get; private set; }
